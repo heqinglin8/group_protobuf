@@ -1,0 +1,15 @@
+// protobuf/base.proto
+syntax = "proto3";
+
+package model;
+option go_package = "github.com/heqinglin/group/protobuf;model";
+
+message BaseReq {
+string app_id = 1;  // 修改为 app_id
+// 其他可选基础请求字段...
+}
+
+message BaseResp {
+int32 code = 1;    // 修改为 code
+string msg = 2;     // 修改为 msg
+}
