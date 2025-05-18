@@ -1,0 +1,39 @@
+// protobuf/user.proto
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+package model;
+option go_package = "github.com/heqinglin/group/protobuf;model";
+import "base.proto";  // 引入基础定义
+
+// 请求参数
+message ActivityListReq {
+  BaseReq base_req = 1;
+  int32 page = 2;              // 当前页码，从1开始
+  int32 page_size = 3;         // 每页数量
+  string search_keyword = 4;   // 可选：按活动名称或描述模糊搜索
+  int32 status = 5;            // 可选：活动状态过滤（例如 0=全部，1=未开始，2=进行中，3=已结束）
+}
+
+// 活动信息
+message Activity {
+  int64 id = 1;
+  string title = 2;
+  string thumbnail = 3;
+  int32 category_id = 4;
+  string description = 5;
+  int32 status = 6; // 状态：1=未开始，2=进行中，3=已结束
+  google.protobuf.Timestamp start_time = 7;
+  google.protobuf.Timestamp end_time = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+}
+
+// 响应参数
+message ActivityListResp {
+  BaseResp base_resp = 1;
+  repeated Activity activities = 2;  // 活动列表
+  int32 total = 3;                   // 总记录数
+  int32 page = 4;                    // 当前页码（回显）
+  int32 page_size = 5;               // 每页数量（回显）
+  int32 total_pages = 6;             // 总页数（可选）
+}

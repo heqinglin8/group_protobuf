@@ -1,0 +1,35 @@
+// protobuf/user.proto
+syntax = "proto3";
+package model;
+import "google/protobuf/timestamp.proto";
+option go_package = "github.com/heqinglin/group/protobuf;model";
+import "base.proto";  // 引入基础定义
+
+// 这里定义了一个类目消息结构体
+message Category {
+  int32 id = 1;
+  int32 categoryId = 2;
+  string name = 3;
+  string thumbnail = 4;
+  string details = 5;
+  google.protobuf.Timestamp create_time = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+// 请求参数
+message CategoryListReq {
+  BaseReq base_req = 1;
+  int32 page = 2;           // 当前页码，从1开始
+  int32 page_size = 3;      // 每页数量
+  string search_keyword = 4; // 可选：搜索关键字（按类目名称模糊查询）
+}
+
+// 响应参数
+message CategoryListResp {
+  BaseResp base_resp = 1;
+  repeated Category categories = 2;  // 类目列表
+  int32 total = 3;                   // 总记录数
+  int32 page = 4;                    // 当前页码（回显）
+  int32 page_size = 5;               // 每页数量（回显）
+  int32 total_pages = 6;             // 总页数（可选）
+}
