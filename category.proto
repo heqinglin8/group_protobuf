@@ -12,7 +12,7 @@ message Category {
   string name = 3;
   string thumbnail = 4;
   string details = 5;
-  google.protobuf.Timestamp create_time = 6;
+  google.protobuf.Timestamp create_at = 6;
   google.protobuf.Timestamp updated_at = 7;
 }
 

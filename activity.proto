@@ -16,7 +16,7 @@ message ActivityListReq {
 
 // 活动信息
 message Activity {
-  int64 id = 1;
+  int32 id = 1;
   string title = 2;
   string thumbnail = 3;
   int32 category_id = 4;
