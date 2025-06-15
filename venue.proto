@@ -1,0 +1,39 @@
+// protobuf/user.proto
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+package model;
+option go_package = "github.com/heqinglin/group/protobuf;model";
+import "base.proto";  // 引入基础定义
+
+// 请求参数
+message VenueListReq {
+  BaseReq base_req = 1;
+  int32 page = 2;              // 当前页码，从1开始
+  int32 page_size = 3;         // 每页数量
+  string search_keyword = 4;   // 可选：按活动名称或描述模糊搜索
+  string category_ids = 5;            // 可选：分类过滤（例如 0=全部，1=篮球，2=羽毛球，3=足球）
+}
+
+// 场馆信息
+message Venue {
+  int32 id = 1;
+  string name = 2;
+  string thumbnail = 3;
+  string category_ids = 4;
+  string details = 5;
+  string sddress = 6;
+  float latitude = 7;
+  float longitude = 8;
+  string city = 9;
+  google.protobuf.Timestamp created_at = 10;
+}
+
+// 响应参数
+message VenueListResp {
+  BaseResp base_resp = 1;
+  repeated Venue activities = 2;  // 活动列表
+  int32 total = 3;                   // 总记录数
+  int32 page = 4;                    // 当前页码（回显）
+  int32 page_size = 5;               // 每页数量（回显）
+  int32 total_pages = 6;             // 总页数（可选）
+}
