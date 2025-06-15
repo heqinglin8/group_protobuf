@@ -1,4 +1,4 @@
-// protobuf/user.proto
+// protobuf/venue.proto
 syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 package model;
