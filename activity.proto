@@ -10,8 +10,9 @@ message ActivityListReq {
   BaseReq base_req = 1;
   int32 page = 2;              // 当前页码，从1开始
   int32 page_size = 3;         // 每页数量
-  string search_keyword = 4;   // 可选：按活动名称或描述模糊搜索
-  int32 status = 5;            // 可选：活动状态过滤（例如 0=全部，1=未开始，2=进行中，3=已结束）
+  int32 category_id = 4;      // 可选，筛选分类
+  string keyword = 5;   // 可选：按活动名称或描述模糊搜索
+  int32 status = 6;            // 可选：活动状态过滤（例如 0=全部，1=未开始，2=进行中，3=已结束）
 }
 
 // 活动信息
