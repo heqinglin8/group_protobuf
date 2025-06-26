@@ -14,12 +14,14 @@ message LoginReq {
 message LoginResp {
   BaseResp base_resp = 1;
   string token = 2;
+  UserInfo user_info = 3; // 登录成功后返回用户信息
 }
 
 // 可添加其他用户相关message...
 message UserInfo {
   string user_id = 1;
-  string nickname = 2;
+  string username = 2;
+  string nickname = 3;
 }
 
 message RegisterReq {
@@ -33,4 +35,6 @@ message RegisterReq {
 
 message RegisterResp {
   BaseResp base_resp= 1;
+  string token = 2;
+  UserInfo user_info = 3; // 登录成功后返回用户信息
 }
