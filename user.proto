@@ -22,6 +22,10 @@ message UserInfo {
   string user_id = 1;
   string username = 2;
   string nickname = 3;
+  string Avatar = 4; // 头像URL
+  string password = 5;
+  string email = 6;
+  string phone = 7;
 }
 
 message RegisterReq {
